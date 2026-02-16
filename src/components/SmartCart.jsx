@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./products.module.css";
 import Products from "./Products";
 import ProductsInCard from "./ProductsInCard";
 import ButtonClear from "./ButtonClear";
 function SmartCart() {
-  const [cardItems, setCardItems] = useState([]);
+  const [cardItems, setCardItems] = useState(() => {
+    const saved = localStorage.getItem("card");
+    if (!saved) return [];
+    try {
+      const parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }, []);
   const [isDark, setIsDark] = useState(false);
+
   const addProduct = (elem) => {
     if (cardItems.includes(elem)) return;
     setCardItems([...cardItems, elem]);
@@ -18,6 +28,10 @@ function SmartCart() {
   const clearCard = () => {
     setCardItems([]);
   };
+
+  useEffect(() => {
+    localStorage.setItem("card", JSON.stringify(cardItems));
+  }, [cardItems]);
 
   return (
     <div className={styles.selectProducts}>
