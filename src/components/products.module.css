@@ -33,13 +33,90 @@ body {
 .selectProductsContainer {
   width: 352px;
   min-height: 400px;
-  padding: 10px 30px;
+  padding: 20px 30px;
   padding-bottom: 50px;
   border-radius: 30px;
   background: lightgrey;
+
   box-shadow:
     rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset,
     rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
+  position: relative;
+}
+.selectProductsContainerDark {
+  width: 352px;
+  min-height: 400px;
+  padding: 20px 30px;
+  padding-bottom: 50px;
+  border-radius: 30px;
+  background-color: #1e0d39;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
+  position: relative;
+  color: white;
+}
+.toggleTheme {
+  --toggle-size: 10px;
+  padding: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 6.25em;
+  height: 3.125em;
+  background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      color-stop(50%, #efefef),
+      color-stop(50%, #2a2a2a)
+    )
+    no-repeat;
+  background: -o-linear-gradient(left, #efefef 50%, #2a2a2a 50%) no-repeat;
+  background: linear-gradient(to right, #efefef 50%, #2a2a2a 50%) no-repeat;
+  background-size: 205%;
+  background-position: 0;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 99em;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--toggle-size);
+  position: absolute;
+  top: 1px;
+}
+.toggleTheme::before {
+  content: "";
+  width: 2.25em;
+  height: 2.25em;
+  position: absolute;
+  top: 0.438em;
+  left: 0.438em;
+  background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      color-stop(50%, #efefef),
+      color-stop(50%, #2a2a2a)
+    )
+    no-repeat;
+  background: -o-linear-gradient(left, #efefef 50%, #2a2a2a 50%) no-repeat;
+  background: linear-gradient(to right, #efefef 50%, #2a2a2a 50%) no-repeat;
+  background-size: 205%;
+  background-position: 100%;
+  border-radius: 50%;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+}
+.toggleTheme:checked::before {
+  left: calc(100% - 2.25em - 0.438em);
+  background-position: 0;
+}
+
+.toggleTheme:checked {
+  background-position: 100%;
 }
 .productsContainer {
   margin-top: 30px;
@@ -65,9 +142,9 @@ body {
   border-radius: 10px;
 }
 .elemItem.inCard {
-  background: #fff1f2; /* мягкий красный фон */
-  border: 1px solid #fecdd3; /* нежная граница */
-  color: #7f1d1d; /* глубокий красный текст */
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #7f1d1d;
   font-weight: 500;
   transition: all 0.2s ease;
 }
