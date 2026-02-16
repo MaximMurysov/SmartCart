@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styles from "./products.module.css";
-import { MdDelete } from "react-icons/md";
 import Products from "./Products";
 import ProductsInCard from "./ProductsInCard";
+import ButtonClear from "./ButtonClear";
 function SmartCart() {
   const [cardItems, setCardItems] = useState([]);
 
@@ -24,16 +24,7 @@ function SmartCart() {
       <div className={styles.selectProductsContainer}>
         <Products cardItems={cardItems} addProduct={addProduct} />
         <ProductsInCard cardItems={cardItems} deleteProduct={deleteProduct} />
-
-        {cardItems.length > 1 && (
-          <button
-            onClick={clearCard}
-            style={{ width: "120px" }}
-            className={styles.deleteBtn}
-          >
-            Clear All
-          </button>
-        )}
+        <ButtonClear cardItems={cardItems} clearCard={clearCard} />
       </div>
     </div>
   );
