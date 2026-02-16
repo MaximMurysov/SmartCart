@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./products.module.css";
 import { MdDelete } from "react-icons/md";
 import Products from "./Products";
+import ProductsInCard from "./ProductsInCard";
 function SmartCart() {
   const [cardItems, setCardItems] = useState([]);
 
@@ -22,19 +23,7 @@ function SmartCart() {
     <div className={styles.selectProducts}>
       <div className={styles.selectProductsContainer}>
         <Products cardItems={cardItems} addProduct={addProduct} />
-        <div>
-          {cardItems.map((elem) => (
-            <div className={styles.delete}>
-              <p>{elem}</p>
-              <button
-                onClick={() => deleteProduct(elem)}
-                className={styles.deleteBtn}
-              >
-                <MdDelete />
-              </button>
-            </div>
-          ))}
-        </div>
+        <ProductsInCard cardItems={cardItems} deleteProduct={deleteProduct} />
 
         {cardItems.length > 1 && (
           <button
