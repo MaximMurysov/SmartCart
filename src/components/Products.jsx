@@ -11,12 +11,12 @@ function Products({ cardItems, addProduct, isDark, setIsDark }) {
         onChange={() => setIsDark(!isDark)}
       />
       {products.map((elem) => (
-        <div key={elem} className={`${styles.productItem} `}>
+        <div key={elem.id} className={`${styles.productItem} `}>
           <p
             className={`${styles.elemItem} ${cardItems.includes(elem) ? styles.inCard : ""}`}
             onClick={() => addProduct(elem)}
           >
-            {elem}
+            {elem.title}
           </p>
         </div>
       ))}
